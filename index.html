@@ -157,11 +157,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 
 /* CV */
 #cv{background:var(--cream);}
-.cv-grid{display:grid;grid-template-columns:160px 1fr;gap:64px;}
-.cv-sidebar-nav{position:sticky;top:calc(var(--nav-h) + 24px);display:flex;flex-direction:column;gap:0;}
-.cv-nav-link{display:block;font-family:var(--font-display);font-size:12px;font-weight:400;color:var(--text-muted);padding:11px 0;border-bottom:1px solid var(--sand);cursor:pointer;transition:color 0.2s;letter-spacing:0.02em;background:none;}
+.cv-grid{display:grid;grid-template-columns:160px 1fr;gap:64px;align-items:start;}
+.cv-sidebar-nav{position:sticky;top:calc(var(--nav-h) + 24px);display:flex;flex-direction:column;gap:0;align-self:start;}
+.cv-nav-link{display:block;font-family:var(--font-display);font-size:12px;font-weight:400;color:var(--text-muted);padding:11px 0;border-bottom:1px solid var(--sand);cursor:pointer;transition:color 0.2s;letter-spacing:0.02em;background:transparent !important;outline:none;}
 .cv-nav-link:first-child{border-top:1px solid var(--sand);}
-.cv-nav-link:hover,.cv-nav-link.active{color:var(--accent);}
+.cv-nav-link:hover,.cv-nav-link.active{color:var(--accent);background:transparent !important;}
 .cv-block{margin-bottom:52px;}
 .cv-block:last-child{margin-bottom:0;}
 .cv-block-head{font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);padding-bottom:12px;border-bottom:1px solid var(--sand);margin-bottom:24px;}
@@ -224,6 +224,25 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
 [data-theme="dark"] footer{background:#040c14;}
 .footer-name{font-family:var(--font-display);font-size:12px;font-weight:500;color:rgba(240,235,226,0.38);letter-spacing:0.1em;}
 .footer-copy{font-size:11px;color:rgba(240,235,226,0.22);}
+
+/* OUTREACH SPLIT */
+.outreach-split{display:grid;grid-template-columns:1fr 1fr;min-height:480px;border-top:1px solid var(--sand);}
+.outreach-slideshow{position:relative;overflow:hidden;background:var(--navy-mid);min-height:480px;}
+.oslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease;}
+.oslide.active{opacity:1;}
+.oslide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,33,55,0.15),transparent);}
+.oslide-dots{position:absolute;bottom:20px;left:20px;display:flex;gap:6px;z-index:2;}
+.oslide-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s;}
+.oslide-dot.active{background:white;width:16px;border-radius:3px;}
+.oslide-label{position:absolute;bottom:20px;right:20px;font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;z-index:2;}
+.outreach-list{padding:32px 64px 64px;background:var(--cream);display:flex;flex-direction:column;}
+[data-theme="dark"] .outreach-list{background:var(--cream-dark);}
+.olist-item{padding:18px 0;border-bottom:1px solid var(--sand);cursor:pointer;transition:all 0.2s;}
+.olist-item:hover .olist-title,.olist-item.active .olist-title{color:var(--accent);}
+.olist-item.active{border-left:2px solid var(--accent);padding-left:12px;margin-left:-14px;}
+.olist-date{font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.olist-title{font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--text-dark);line-height:1.35;margin-bottom:2px;transition:color 0.2s;}
+.olist-place{font-size:12px;color:var(--text-muted);font-weight:300;}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.65s ease,transform 0.65s ease;}
@@ -425,52 +444,72 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
 </div>
 
 <!-- OUTREACH & EVENTS -->
-<div id="outreach" class="site-section reveal">
-  <div class="section-inner">
+<div id="outreach" class="site-section reveal" style="padding:0;border-top:1px solid var(--sand);">
+  <!-- COMING UP strip -->
+  <div class="section-inner" style="padding-top:96px;padding-bottom:52px;">
     <span class="section-label">Outreach & Events</span>
     <h2 class="section-title">Panels, <strong>talks</strong> & public science</h2>
-    <div class="outreach-subsection">
-      <div class="subsection-rule">Coming up</div>
-      <div class="coming-line">
-        <div><span class="coming-year-sm">2026</span><span class="coming-month">Jul</span></div>
-        <div><div class="coming-title">Sharks International 2026 — Oral Presentation</div><div class="coming-place">Blue shark photo-identification research · Sri Lanka</div></div>
-      </div>
-      <div class="coming-line">
-        <div><span class="coming-year-sm">2026</span><span class="coming-month">TBC</span></div>
-        <div><div class="coming-title">InspiraSTEM — Speaker, Erasmus Mundus Opportunities</div><div class="coming-place">For Salvadoran students & researchers · El Salvador</div></div>
-      </div>
-      <div class="coming-line">
-        <div><span class="coming-year-sm">2026</span><span class="coming-month">TBC</span></div>
-        <div><div class="coming-title">Shark Education Association (SEI Portugal)</div><div class="coming-place">Portugal</div></div>
-      </div>
+    <div class="subsection-rule" style="margin-bottom:0;">Coming up</div>
+    <div class="coming-line">
+      <div><span class="coming-year-sm">2026</span><span class="coming-month">Jul</span></div>
+      <div><div class="coming-title">Sharks International 2026 — Oral Presentation</div><div class="coming-place">Blue shark photo-identification research · Sri Lanka</div></div>
     </div>
-    <div class="outreach-subsection">
-      <div class="subsection-rule">Past events</div>
-      <div class="events-grid">
-        <div class="event-card">
-          <div class="event-img-wrap"><img src="https://drive.google.com/uc?export=view&id=188mFJGMw5cN1au1vSnPAj0fEzVJuyngK" alt="Marine Society Oporto" onerror="this.parentElement.innerHTML='<div class=\'event-img-placeholder\'>Marine Society · CLIP Oporto 2026</div>'"></div>
-          <div class="event-body"><div class="event-date">Mar 2026</div><div class="event-title">Blue Sharks in the Deep Blue: Chasing the Shark Dream</div><div class="event-place">Marine Society Ocean Series · CLIP, Oporto</div></div>
-        </div>
-        <div class="event-card">
-          <div class="event-img-wrap"><div class="event-img-placeholder">IOC-UNESCO · UNOC3<br>Nice 2025</div></div>
-          <div class="event-body"><div class="event-date">Jun 2025</div><div class="event-title">Panelist — IOC-UNESCO Ocean Literacy Pavilion</div><div class="event-place">UN Ocean Conference 3 · Nice, France</div></div>
-        </div>
-        <div class="event-card">
-          <div class="event-img-wrap"><div class="event-img-placeholder">Stanford Center for<br>Ocean Solutions · 2025</div></div>
-          <div class="event-body"><div class="event-date">Jun 2025</div><div class="event-title">Bridging Science with Policy and Community-based Action</div><div class="event-place">Stanford / ECOP · Nice, France</div></div>
-        </div>
-        <div class="event-card">
-          <div class="event-img-wrap"><div class="event-img-placeholder">Circle of Voices<br>Podcast 2025</div></div>
-          <div class="event-body"><div class="event-date">Jun – Jul 2025</div><div class="event-title">Circle of Voices Podcast — 30 Voices from UNOC 2025</div><div class="event-place">Podcast Interview</div></div>
-        </div>
-        <div class="event-card">
-          <div class="event-img-wrap"><img src="https://drive.google.com/uc?export=view&id=1Ir7QDkQW9Vdp21qHj6DE2YZ7rAj0ZGIS" alt="EMA El Salvador EU Ambassador" onerror="this.parentElement.innerHTML='<div class=\'event-img-placeholder\'>EMA El Salvador<br>EU Ambassador 2024</div>'"></div>
-          <div class="event-body"><div class="event-date">2024</div><div class="event-title">EMA El Salvador Onboarding with EU Ambassador</div><div class="event-place">Erasmus Mundus Association · El Salvador</div></div>
-        </div>
-        <div class="event-card">
-          <div class="event-img-wrap"><img src="https://drive.google.com/uc?export=view&id=1IzFRuD17Pg5Q6XWl7OrHUmr3Pjf69dp9" alt="Regional Mentoring EMA" onerror="this.parentElement.innerHTML='<div class=\'event-img-placeholder\'>Regional Mentoring<br>EMA Central America</div>'"></div>
-          <div class="event-body"><div class="event-date">2024 – 2025</div><div class="event-title">Regional Mentoring Program — EMA Central America</div><div class="event-place">Erasmus Mundus Association · Central America</div></div>
-        </div>
+    <div class="coming-line">
+      <div><span class="coming-year-sm">2026</span><span class="coming-month">TBC</span></div>
+      <div><div class="coming-title">InspiraSTEM — Speaker, Erasmus Mundus Opportunities</div><div class="coming-place">For Salvadoran students & researchers · El Salvador</div></div>
+    </div>
+    <div class="coming-line">
+      <div><span class="coming-year-sm">2026</span><span class="coming-month">TBC</span></div>
+      <div><div class="coming-title">Shark Education Association (SEI Portugal)</div><div class="coming-place">Portugal</div></div>
+    </div>
+  </div>
+
+  <!-- PAST EVENTS: hero-style split -->
+  <div class="outreach-split">
+    <!-- LEFT: photo slideshow -->
+    <div class="outreach-slideshow" id="outreach-slideshow">
+      <div class="oslide active" style="background-image:url('https://drive.google.com/uc?export=view&id=188mFJGMw5cN1au1vSnPAj0fEzVJuyngK')"></div>
+      <div class="oslide" style="background-color:var(--navy-mid);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,0.35);font-size:12px;text-align:center;padding:20px;">IOC-UNESCO · UNOC3<br>Nice 2025</span></div>
+      <div class="oslide" style="background-color:#1a3a55;display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,0.35);font-size:12px;text-align:center;padding:20px;">Stanford Center for<br>Ocean Solutions · 2025</span></div>
+      <div class="oslide" style="background-color:#122535;display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,0.35);font-size:12px;text-align:center;padding:20px;">Circle of Voices<br>Podcast · 2025</span></div>
+      <div class="oslide" style="background-image:url('https://drive.google.com/uc?export=view&id=1Ir7QDkQW9Vdp21qHj6DE2YZ7rAj0ZGIS')"></div>
+      <div class="oslide" style="background-image:url('https://drive.google.com/uc?export=view&id=1IzFRuD17Pg5Q6XWl7OrHUmr3Pjf69dp9')"></div>
+      <div class="oslide-overlay"></div>
+      <div class="oslide-dots" id="oslide-dots"></div>
+      <div class="oslide-label" id="oslide-label">1 / 6</div>
+    </div>
+    <!-- RIGHT: event list -->
+    <div class="outreach-list">
+      <div class="subsection-rule" style="margin-bottom:0;">Past events</div>
+      <div class="olist-item active" data-slide="0" onclick="goOSlide(0)">
+        <div class="olist-date">Mar 2026</div>
+        <div class="olist-title">Blue Sharks in the Deep Blue: Chasing the Shark Dream</div>
+        <div class="olist-place">Marine Society Ocean Series · CLIP, Oporto</div>
+      </div>
+      <div class="olist-item" data-slide="1" onclick="goOSlide(1)">
+        <div class="olist-date">Jun 2025</div>
+        <div class="olist-title">Panelist — IOC-UNESCO Ocean Literacy Pavilion</div>
+        <div class="olist-place">UN Ocean Conference 3 · Nice, France</div>
+      </div>
+      <div class="olist-item" data-slide="2" onclick="goOSlide(2)">
+        <div class="olist-date">Jun 2025</div>
+        <div class="olist-title">Bridging Science with Policy and Community-based Action</div>
+        <div class="olist-place">Stanford Center for Ocean Solutions / ECOP · Nice, France</div>
+      </div>
+      <div class="olist-item" data-slide="3" onclick="goOSlide(3)">
+        <div class="olist-date">Jun – Jul 2025</div>
+        <div class="olist-title">Circle of Voices Podcast — 30 Voices from UNOC 2025</div>
+        <div class="olist-place">Podcast interview</div>
+      </div>
+      <div class="olist-item" data-slide="4" onclick="goOSlide(4)">
+        <div class="olist-date">2024</div>
+        <div class="olist-title">EMA El Salvador Onboarding with EU Ambassador</div>
+        <div class="olist-place">Erasmus Mundus Association · El Salvador</div>
+      </div>
+      <div class="olist-item" data-slide="5" onclick="goOSlide(5)">
+        <div class="olist-date">2024 – 2025</div>
+        <div class="olist-title">Regional Mentoring Program — EMA Central America</div>
+        <div class="olist-place">Erasmus Mundus Association · Central America</div>
       </div>
     </div>
   </div>
@@ -604,8 +643,8 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
       <div class="contact-label-top">Reach out</div>
       <div class="contact-lines">
         <div class="contact-line"><span class="contact-line-label">General inquiries</span><span class="contact-line-val"><a href="mailto:andreaherrera.contact@gmail.com">andreaherrera.contact@gmail.com</a></span></div>
-        <div class="contact-line"><span class="contact-line-label">ECOP Capacity Hub</span><span class="contact-line-val"><a href="mailto:capacity.development_centralam@ecopdecade.org">capacity.development_centralam@ecopdecade.org</a></span></div>
-        <div class="contact-line"><span class="contact-line-label">EMA El Salvador</span><span class="contact-line-val"><a href="mailto:elsalvador@em-a.eu">elsalvador@em-a.eu</a></span></div>
+        <div class="contact-line"><span class="contact-line-label">Capacity Development Central America | Hub Lead Coordinator</span><span class="contact-line-val"><a href="mailto:capacity.development_centralam@ecopdecade.org">capacity.development_centralam@ecopdecade.org</a></span></div>
+        <div class="contact-line"><span class="contact-line-label">EMA El Salvador | Country Representative</span><span class="contact-line-val"><a href="mailto:elsalvador@em-a.eu">elsalvador@em-a.eu</a></span></div>
       </div>
     </div>
   </div>
@@ -626,10 +665,6 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
           <span class="social-icon-label">ECOP</span>
         </a>
-        <a href="https://orcid.org/0009-0009-7165-2405" target="_blank" class="social-icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 7v10M12 7c2.5 0 4 1.5 4 3s-1.5 3-4 3H9"/></svg>
-          <span class="social-icon-label">ORCID</span>
-        </a>
         <a href="https://linktr.ee/andreasharkyherrera" target="_blank" class="social-icon-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
           <span class="social-icon-label">Linktree</span>
@@ -638,18 +673,15 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span class="social-icon-label">Email</span>
         </a>
-        <a href="https://www.cienciavitae.pt/2F10-AEEA-AC9F" target="_blank" class="social-icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <span class="social-icon-label">Ciência ID</span>
-        </a>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <span class="footer-name">Andrea Herrera · Marine Scientist</span>
-  <span class="footer-copy">Matosinhos, Portugal · 2026</span>
+  <!-- Footer options: "Andrea Herrera, 2026" (minimal) or "Andrea J. Herrera — Marine Scientist & Science Communicator" (fuller identity) -->
+  <span class="footer-name">Andrea Herrera</span>
+  <span class="footer-copy">© 2026</span>
 </footer>
 
 <script>
@@ -683,12 +715,21 @@ themeBtn.addEventListener('click', () => {
   themeBtn.textContent = dark ? 'Light' : 'Dark';
 });
 
-// LANGUAGE TRANSLATION
+// LANGUAGE TRANSLATION — works on live GitHub Pages URL
 function translatePage(lang) {
-  if (lang === 'en') { location.reload(); return; }
-  const pageUrl = encodeURIComponent(location.href);
-  const gtUrl = `https://translate.google.com/translate?hl=${lang}&sl=en&u=${pageUrl}`;
-  window.location.href = gtUrl;
+  if (lang === 'en') {
+    // Remove any Google Translate wrapper and reload clean
+    const gtFrame = document.querySelector('.goog-te-banner-frame');
+    if (gtFrame) gtFrame.style.display = 'none';
+    const url = window.location.href.replace(/\?.*/, '');
+    window.location.href = url;
+    return;
+  }
+  // Build Google Translate URL with current page — works on live hosted sites
+  const currentUrl = encodeURIComponent(window.location.href.split('?')[0]);
+  const langMap = { 'es': 'es', 'pt': 'pt', 'zh-TW': 'zh-TW' };
+  const gtLang = langMap[lang] || lang;
+  window.location.href = `https://translate.google.com/translate?hl=en&sl=en&tl=${gtLang}&u=${currentUrl}`;
 }
 
 // MOBILE NAV
@@ -707,7 +748,36 @@ function scrollCV(id, el) {
   el.classList.add('active');
 }
 
-// ACTIVE NAV HIGHLIGHT
+// OUTREACH SLIDESHOW
+(function() {
+  const oslides = document.querySelectorAll('.oslide');
+  const odotsContainer = document.getElementById('oslide-dots');
+  const olabel = document.getElementById('oslide-label');
+  const oitems = document.querySelectorAll('.olist-item');
+  let oidx = 0;
+  if (!oslides.length || !odotsContainer) return;
+  oslides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'oslide-dot' + (i===0?' active':'');
+    d.onclick = () => goOSlide(i);
+    odotsContainer.appendChild(d);
+  });
+  window.goOSlide = function(n) {
+    oslides[oidx].classList.remove('active');
+    odotsContainer.children[oidx].classList.remove('active');
+    oitems[oidx]?.classList.remove('active');
+    oidx = n;
+    oslides[oidx].classList.add('active');
+    odotsContainer.children[oidx].classList.add('active');
+    oitems[oidx]?.classList.add('active');
+    if (olabel) olabel.textContent = (oidx+1) + ' / ' + oslides.length;
+  };
+  // clicking list items triggers slide
+  oitems.forEach((item, i) => { item.onclick = () => goOSlide(i); });
+  setInterval(() => goOSlide((oidx+1) % oslides.length), 4000);
+})();
+
+
 const navAs = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let cur = '';
