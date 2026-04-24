@@ -1,2 +1,2 @@
 # heanyaj.github.io
-Personal website with external blog pages build up
+Personal website with external blog pages built up
