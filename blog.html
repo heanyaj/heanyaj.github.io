@@ -31,17 +31,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .blog-hero-title strong{font-weight:700;}
 .blog-hero-sub{font-size:14px;color:var(--text-muted);font-weight:300;max-width:520px;line-height:1.7;}
 
-/* FILTER BAR */
-.filter-bar{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--sand);padding:0 80px;overflow-x:auto;}
-.filter-btn{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);padding:16px 20px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:var(--font-body);}
-.filter-btn:hover{color:var(--text-dark);}
-.filter-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
-
 /* GRID */
 .blog-grid{max-width:1200px;margin:0 auto;padding:64px 80px 96px;}
 
-/* FEATURED POST — full width, large image left */
-.post-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:1px;background:var(--white);border:1px solid var(--sand);overflow:hidden;transition:border-color 0.2s;}
+/* FEATURED POST */
+.post-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;background:var(--white);border:1px solid var(--sand);overflow:hidden;transition:border-color 0.2s;}
 [data-theme="dark"] .post-featured{background:var(--white);}
 .post-featured:hover{border-color:var(--accent);}
 .post-featured-img{width:100%;height:420px;object-fit:cover;background:var(--navy-mid);}
@@ -55,21 +49,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .post-read-link{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s;}
 .post-read-link:hover{gap:10px;}
 
-/* CARD GRID — 3 col */
-.post-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand);margin-top:1px;}
-.post-card{background:var(--cream);overflow:hidden;transition:background 0.18s;display:flex;flex-direction:column;}
+/* CARD GRID — 3 col with real gap, transparent background (no empty box) */
+.post-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;background:transparent;margin-top:0;}
+.post-card{background:var(--white);border:1px solid var(--sand);border-radius:2px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;}
 [data-theme="dark"] .post-card{background:var(--white);}
-.post-card:hover{background:var(--cream-dark);}
-[data-theme="dark"] .post-card:hover{background:#122030;}
+.post-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .post-card-img{width:100%;height:200px;object-fit:cover;background:var(--navy-mid);}
 .post-card-img-placeholder{width:100%;height:200px;background:var(--navy-mid);display:flex;align-items:center;justify-content:center;}
 .post-card-img-placeholder span{font-size:11px;color:rgba(255,255,255,0.3);text-align:center;padding:16px;line-height:1.6;}
-.post-card-body{padding:22px 22px 28px;flex:1;display:flex;flex-direction:column;}
-.post-card-cat{font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-.post-card-title{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--text-dark);line-height:1.35;margin-bottom:10px;flex:1;}
+.post-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column;}
+.post-card-title{font-family:var(--font-display);font-size:15px;font-weight:500;color:var(--text-dark);line-height:1.35;margin-bottom:10px;flex:1;}
 .post-card-excerpt{font-size:12px;color:var(--text-muted);line-height:1.65;font-weight:300;margin-bottom:16px;}
-.post-card-footer{display:flex;justify-content:space-between;align-items:center;}
+.post-card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;}
 .post-card-date{font-size:10px;color:var(--text-muted);}
+/* Category: small pill tag, shown under title at bottom of card */
+.post-card-cat{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(91,168,160,0.35);border-radius:20px;padding:3px 10px;}
 .post-card-link{font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
 
 /* COMING SOON PLACEHOLDER */
@@ -84,10 +78,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 
 @media(max-width:840px){
   nav{padding:0 20px;}
-  .blog-hero,.blog-grid,.filter-bar,.editor-note{padding-left:24px;padding-right:24px;}
+  .blog-hero,.blog-grid,.editor-note{padding-left:24px;padding-right:24px;}
   .post-featured{grid-template-columns:1fr;}
   .post-featured-img,.post-featured-img-placeholder{height:240px;}
-  .post-cards{grid-template-columns:1fr;}
+  .post-cards{grid-template-columns:1fr;gap:16px;}
   .editor-note{margin:32px 24px 0;}
 }
 </style>
@@ -108,16 +102,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
   <span class="blog-hero-label">Blog</span>
   <h1 class="blog-hero-title">Andrea <strong>Mar Adentro</strong></h1>
   <p class="blog-hero-sub"> <strong>Welcome · Bienvenides · 歡迎光臨 · Bem-vindo</strong></p> A Salvadoran marine scientist writing from deep inside the ocean, academia, and life in between, with a sprinkle of silliness, lots of truth, and science-packed stories.</p>
-</div>
-
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filterPosts('all',this)">All</button>
-  <button class="filter-btn" onclick="filterPosts('science',this)">Science</button>
-  <button class="filter-btn" onclick="filterPosts('policy',this)">Policy</button>
-  <button class="filter-btn" onclick="filterPosts('field',this)">Field notes</button>
-  <button class="filter-btn" onclick="filterPosts('opinion',this)">Opinion</button>
-  <button class="filter-btn" onclick="filterPosts('capacity',this)">Capacity-building</button>
 </div>
 
 <!-- POSTS GRID -->
@@ -147,62 +131,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
     ══════════════════════════════════════════════════════ -->
 
     <a href="#" class="post-card" data-cat="field">
-      <div class="post-card-img-placeholder"><span>Field notes<br>Azores 2024</span></div>
+      <div class="post-card-img-placeholder"><span>Field notes · Azores 2024</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Field notes</div>
         <div class="post-card-title">Tracking blue sharks at sea: field notes from the Azores</div>
         <div class="post-card-excerpt">What it's like to spend a season tagging and photographing blue sharks in the open Atlantic — the logistics, the surprises, and what the data means.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-footer"><span class="post-card-cat">Field notes</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
     <a href="#" class="post-card" data-cat="opinion">
       <div class="post-card-img-placeholder"><span>Opinion</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Opinion</div>
         <div class="post-card-title">Why the ocean needs more voices from the Global South</div>
         <div class="post-card-excerpt">On who gets to define ocean science priorities, and what inclusive governance actually requires beyond good intentions.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-footer"><span class="post-card-cat">Opinion</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
     <a href="#" class="post-card" data-cat="policy">
       <div class="post-card-img-placeholder"><span>Policy</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Policy</div>
         <div class="post-card-title">From UNOC Nice to real change: what happens after the speeches</div>
         <div class="post-card-excerpt">Reflections from the UN Ocean Conference 2025 — what was said, what was committed, and what still needs to happen at the regional level.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-footer"><span class="post-card-cat">Policy</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
     <a href="#" class="post-card" data-cat="capacity">
       <div class="post-card-img-placeholder"><span>Capacity-building</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Capacity-building</div>
         <div class="post-card-title">Building ocean science capacity in Central America: lessons from ECOP</div>
-        <div class="post-card-excerpt">What works, what doesn't, and why co-design matters when building capacity programs for early-career professionals across the Global South.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-excerpt">What works, what doesn't, and why co-design matters when building programs for early-career professionals across the Global South.</div>
+        <div class="post-card-footer"><span class="post-card-cat">Capacity-building</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
     <a href="#" class="post-card" data-cat="science">
       <div class="post-card-img-placeholder"><span>Science</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Science</div>
         <div class="post-card-title">Photo-identification as a tool for shark conservation: a primer</div>
         <div class="post-card-excerpt">How image-based ID methods work, why they matter for long-term monitoring, and what my MSc research added to the field.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-footer"><span class="post-card-cat">Science</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
     <a href="#" class="post-card" data-cat="opinion">
       <div class="post-card-img-placeholder"><span>Opinion</span></div>
       <div class="post-card-body">
-        <div class="post-card-cat">Opinion</div>
         <div class="post-card-title">Science in four languages: what multilingualism taught me about inclusion</div>
         <div class="post-card-excerpt">Working in Spanish, English, Mandarin, and Portuguese isn't just a skill set — it's a way of seeing who science leaves behind and who it reaches.</div>
-        <div class="post-card-footer"><span class="post-card-date">Coming soon</span><span class="post-card-link">Read →</span></div>
+        <div class="post-card-footer"><span class="post-card-cat">Opinion</span><span class="post-card-link">Coming soon</span></div>
       </div>
     </a>
 
@@ -220,18 +198,6 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
   document.body.setAttribute('data-theme', dark ? '' : 'dark');
   this.textContent = dark ? 'Dark' : 'Light';
 });
-
-function filterPosts(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.post-card, .post-featured').forEach(p => {
-    p.style.display = (cat === 'all' || p.dataset.cat === cat) ? '' : 'none';
-  });
-  // Reflow grid if needed
-  const grid = document.getElementById('post-cards');
-  grid.style.display = 'none';
-  requestAnimationFrame(() => grid.style.display = 'grid');
-}
 </script>
 </body>
 </html>
