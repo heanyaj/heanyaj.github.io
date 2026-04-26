@@ -145,8 +145,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .olist-place{font-size:12px;color:var(--text-muted);font-weight:300;}
 
 /* ── PUBLICATIONS ── */
-.pub-featured{display:grid;grid-template-columns:180px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--sand);}
-.pub-img{width:180px;height:120px;object-fit:cover;background:var(--navy-mid);}
+.pub-featured{display:grid;grid-template-columns:320px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--sand);}
+.pub-img{width:320px;height:160px;object-fit:cover;background:var(--navy-mid);}
 .pub-meta{font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
 .pub-title{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--text-dark);margin-bottom:6px;line-height:1.3;}
 .pub-authors{font-size:12px;color:var(--text-muted);margin-bottom:8px;font-weight:300;}
@@ -166,9 +166,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .cv-grid{display:grid;grid-template-columns:160px 1fr;gap:64px;align-items:start;}
 .cv-sidebar-nav{position:sticky;top:calc(var(--nav-h) + 24px);display:flex;flex-direction:column;gap:0;align-self:start;}
 /* No background on any state — critical fix */
-.cv-nav-link{display:block;font-family:var(--font-display);font-size:12px;font-weight:400;color:var(--text-muted);padding:11px 0;border-bottom:1px solid var(--sand);cursor:pointer;transition:color 0.2s;letter-spacing:0.02em;background:none !important;-webkit-appearance:none;border-radius:0;outline:none;box-shadow:none;}
+.cv-nav-link{display:block;font-family:var(--font-display);font-size:12px;font-weight:400;color:var(--text-muted);padding:11px 0;border-bottom:1px solid var(--sand);cursor:pointer;transition:color 0.2s;letter-spacing:0.02em;background:none !important;-webkit-appearance:none;border-radius:0;outline:none !important;box-shadow:none !important;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
 .cv-nav-link:first-child{border-top:1px solid var(--sand);}
-.cv-nav-link:hover{color:var(--accent);background:none !important;}
+.cv-nav-link:hover,.cv-nav-link:focus,.cv-nav-link:focus-visible,.cv-nav-link:active{color:var(--accent);background:none !important;outline:none !important;box-shadow:none !important;}
 .cv-nav-link.active{color:var(--accent);background:none !important;}
 /* Mobile also no background */
 @media(max-width:840px){
@@ -264,10 +264,11 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
   .tl-entry{grid-template-columns:1fr;gap:4px;}
   .service-line,.contact-line{grid-template-columns:1fr;gap:6px;}
   .pub-featured{grid-template-columns:1fr;}
+.pub-img{width:100%;height:50vw;}
   footer{padding:20px 24px;flex-direction:column;}
   /* Mobile outreach: stack photos above list */
   .outreach-split{grid-template-columns:1fr;border-top:none;}
-  .outreach-slideshow{min-height:56vw;border-top:1px solid var(--sand);}
+.outreach-slideshow{width:100%;height:100vw;min-height:unset;border-top:1px solid var(--sand);}
   .outreach-list{padding:24px 24px 48px;}
 }
 </style>
@@ -529,13 +530,13 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
   <div class="section-inner">
     <span class="section-label">Work with me</span>
     <h2 class="section-title">These are the areas<br>we can <strong>collaborate</strong></h2>
-    <p class="work-intro">Whether you're building an ocean program with a science-based approach, need science brought to life in words, or are looking for a multilingual voice for your platform or event — I'd love to hear about it.</p>
+    <p class="work-intro">Whether you're building a project with a marine science-based approach or are looking for a multilingual voice for your platform or event — I'd love to hear about it. Let's talk!</p>
 
     <div class="services-list">
-      <div class="service-line"><span class="service-name">Project Collaboration</span><span class="service-desc">Open to partnerships in shark science, capacity-building, ocean education, and community-led ocean projects.</span></div>
+      <div class="service-line"><span class="service-name">Project Collaboration</span><span class="service-desc">Open to partnerships in shark science/conservation & management, capacity-building, ocean education, and community-led ocean projects.</span></div>
       <div class="service-line"><span class="service-name">Science Writing</span><span class="service-desc">Articles, policy briefs, op-eds, and science journalism in English and Spanish — for academic, NGO, and public audiences.</span></div>
       <div class="service-line"><span class="service-name">Consulting</span><span class="service-desc">Capacity-building program design for inclusive ocean conservation, with a focus on Global South communities and early-career professionals.</span></div>
-      <div class="service-line"><span class="service-name">Public Speaking</span><span class="service-desc">Keynotes, panels, and seminars on shark ecology, ocean literacy, marine policy, and inclusive science.</span></div>
+      <div class="service-line"><span class="service-name">Public Speaking</span><span class="service-desc">Keynotes, panels, workshops, and seminars.</span></div>
     </div>
 
     <span class="exploring-label">Currently exploring!</span>
@@ -555,7 +556,7 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
         </div>
         <div class="contact-line">
           <span class="contact-line-label">Capacity Development Central America<br>Hub Lead Coordinator</span>
-          <span class="contact-line-val"><a href="mailto:capacity.development_centralam@ecopdecade.org">capacity.development_centralam@ecopdecade.org</a></span>
+          <span class="contact-line-val"><a href="mailto:capacity.development_centralam@ecopdecade.org"><strong>capacity.development_centralam@ecopdecade.org<strong></a></span>
         </div>
         <div class="contact-line">
           <span class="contact-line-label">EMA El Salvador<br>Country Representative</span>
