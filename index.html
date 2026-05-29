@@ -129,8 +129,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 
 /* OUTREACH SPLIT — desktop */
 .outreach-split{display:grid;grid-template-columns:45% 55%;border-top:1px solid var(--sand);}
-.outreach-slideshow{position:relative;overflow:hidden;background:#071828;min-height:480px;}
-.oslide{position:absolute;inset:0;background-size:contain;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity 1s ease;}
+.outreach-slideshow{position:relative;overflow:hidden;background:var(--navy-mid);min-height:460px;}
+.oslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease;}
 .oslide.active{opacity:1;}
 .oslide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(3,28,60,0.12),transparent);}
 .oslide-dots{position:absolute;bottom:20px;left:20px;display:flex;gap:6px;z-index:2;}
@@ -401,7 +401,7 @@ footer{background:var(--navy);padding:26px 80px;display:flex;justify-content:spa
     <!-- LEFT / TOP (mobile): photo gallery — no auto-transition, click to browse -->
     <div class="outreach-slideshow" id="outreach-slideshow">
       <div class="oslide active" style="background-image:url('images/si-oral-talk.JPG')"></div>
-      <div class="oslide active" style="background-image:url('images/event-clip.jpg')"></div>
+      <div class="oslide" style="background-image:url('images/event-clip.jpg')"></div>
       <div class="oslide" style="background-image:url('images/event-unoc.jpeg')"></div>
       <div class="oslide" style="background-image:url('images/event-standford.jpeg')"></div>
       <div class="oslide" style="background-image:url('images/event-circleofvoices.jpg')"></div>
